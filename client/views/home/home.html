@@ -1,0 +1,106 @@
+<template name="home">
+  <header>
+    <div class="center aligned container">
+        <h1 class="huge center aligned main ui header">
+            {{constant 'name'}}
+            <div class="sub header">
+                by CAPSLOCK_USER
+            </div>
+        </h1>
+    </div>
+  </header>
+
+  {{!<div class="ui two item menu">
+    <a class="item teal">
+      Sign up
+    </a>
+    <a class="item teal active">
+      Sign in
+    </a>
+  </div>}}
+
+  <div class="ui two column stackable center aligned grid segment">
+    <div class="column">
+
+      <div class="ui large fluid {{errorForm}} form">
+        <h2 class="ui center aligned dividing header">
+          Create an Account
+        </h2>
+
+        <div class="ui left aligned error message">
+          <div class="header">
+            There was some errors with your stuff
+          </div>
+          <ul class="list">
+            {{#each errorMessages}}
+              <li>{{this}}</li>
+            {{/each}}
+          </ul>
+        </div>
+
+        <form class="register" action="#" method="POST" novalidate="">
+          <div class="required field">
+            <div class="ui fluid input {{errorClass 'email'}} icon">
+              <input type="email" id="field-email" name="field-email" placeholder="Email" autocapitalize="none" autocorrect="off">
+              <i class="mail outline icon"></i>
+            </div>
+          </div>
+          <div class="required field">
+            <div class="ui fluid input {{errorClass 'name'}} icon">
+              <input type="text" id="field-username" name="field-username" placeholder="Username" autocapitalize="none" autocorrect="off">
+              <i class="user icon"></i>
+            </div>
+          </div>
+          <div class="required field">
+            <div class="ui fluid input {{errorClass 'password'}} icon">
+              <input type="password" id="field-password" name="field-password" placeholder="Password" autocapitalize="none" autocorrect="off">
+              <i class="lock icon"></i>
+            </div>
+          </div>
+          <div class="required field">
+            <div class="ui fluid input {{errorClass 'pwd_again'}} icon">
+              <input type="password" id="field-password_again" name="field-password_again" placeholder="Password (again)" autocapitalize="none" autocorrect="off">
+              <i class="lock icon"></i>
+            </div>
+          </div>
+          {{!<div class="required field">
+            <div class="ui checkbox">
+              <input type="checkbox" name="hot-deals">
+              <label>I agree to the <a href="#">Terms of Service</a>.</label>
+            </div>
+          </div>}}
+          <input type="submit" class="ui fluid large primary button" value="Register">
+        </form>
+      </div>
+    </div>
+    <div class="ui vertical divider">or</div>
+    <div class="column">
+      <div class="ui large fluid form">
+        <h2 class="ui center aligned dividing header">
+          Log in
+        </h2>
+        <form id="login-form" action="#" method="POST" novalidate="">
+          <div class="required field">
+            <div class="ui fluid input icon">
+              <input type="email" id="field-email" name="field-email" placeholder="Email" autocapitalize="none" autocorrect="off">
+              <i class="mail outline icon"></i>
+            </div>
+          </div>
+          <div class="required field">
+            <div class="ui fluid input icon">
+              <input type="password" id="field-password" name="field-password" placeholder="Password" autocapitalize="none" autocorrect="off">
+              <i class="lock icon"></i>
+            </div>
+          </div>
+          <input type="submit" class="ui fluid large teal button" value="Log in">
+        </form>
+      </div>
+    </div>
+  </div>
+
+  {{!<footer>
+    <div class="ui inverted padding-wrapper footer segment">
+      Chat app by CAPSLOCK_USER
+    </div>
+  </footer>}}
+</template>

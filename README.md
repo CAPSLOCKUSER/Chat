@@ -1,0 +1,3 @@
+# Meteor Chat App
+
+WIP
