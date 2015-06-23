@@ -1,10 +1,14 @@
 Meteor.methods({
-  "RegisterUser": function() {
+  "RegisterUser": function(name, email, password) {
+    check(name, String);
+    check(email, String);
+    check(password, String);
+
     Accounts.createUser({
-      email: "ads@werw.hu",
-      password: "asd",
+      email: email,
+      password: password,
       profile: {
-        name: "name"
+        name: name
       }
     });
   }

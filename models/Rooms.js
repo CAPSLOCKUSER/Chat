@@ -2,10 +2,10 @@ Rooms = new Mongo.Collection('Rooms');
 
 Rooms.attachSchema(
     new SimpleSchema({
-    title: {
+    name: {
       type: String
     },
-    content: {
+    description: {
       type: String
     },
     createdAt: {

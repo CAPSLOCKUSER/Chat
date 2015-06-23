@@ -48,7 +48,23 @@ Template.home.events({
       return;
     }
 
-    Meteor.call("RegisterUser");
+    Meteor.call("RegisterUser", name, email, password, function(error) {
+      if (error) {
+        return Session.set(ERRORS_KEY, {'none': error.reason});
+      }
+      Router.go("room");
+    });
+  },
+  "submit form.log-in": function(event, template) {
+    event.preventDefault();
+    var email = template.$('[name=field-email]').val();
+    var password = template.$('[name=field-password]').val();
+    Meteor.loginWithPassword(email, password, function(error) {
+      if (error) {
+        return console.log(error);
+      }
+      Router.go("room");
+    });
   }
 });
 

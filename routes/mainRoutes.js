@@ -9,6 +9,9 @@ Router.route('/', {
 
 Router.route('/room/:_id?', {
   name: 'room',
+  subscriptions: function() {
+    return Meteor.subscribe('Rooms');
+  },
   action: function () {
     this.render('room');
     SEO.set({ title: 'Room - ' + Meteor.App.NAME });

@@ -12,9 +12,14 @@
         Rooms
       </div>
       <div class="menu">
-        <a class="item" href="#">hurr</a>
-        <a class="item active" href="#">durr</a>
-        <a class="item" href="#">toplel</a>
+        {{#each rooms}}
+          <a class="item" href="#">{{name}}</a>
+        {{/each}}
+
+        <div class="ui fluid action input">
+          <input type="text" placeholder="Room">
+          <div class="ui fluid button new-room">Create</div>
+        </div>
       </div>
     </div>
     <div class="item">
