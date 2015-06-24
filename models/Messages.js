@@ -2,10 +2,13 @@ Messages = new Mongo.Collection('Messages');
 
 Messages.attachSchema(
     new SimpleSchema({
-    title: {
+    name: {
       type: String
     },
-    content: {
+    text: {
+      type: String
+    },
+    roomId: {
       type: String
     },
     createdAt: {

@@ -19,10 +19,10 @@ Template.home.helpers({
 Template.home.events({
   "submit form.register": function(event, template) {
     event.preventDefault();
-    var email = template.$('[name=field-email]').val();
-    var name = template.$('[name=field-username]').val();
-    var password = template.$('[name=field-password]').val();
-    var pwd_again = template.$('[name=field-password_again]').val();
+    var email = template.$('form.register [name=field-email]').val();
+    var name = template.$('form.register [name=field-username]').val();
+    var password = template.$('form.register [name=field-password]').val();
+    var pwd_again = template.$('form.register [name=field-password_again]').val();
 
     var errors = {};
 
@@ -57,11 +57,11 @@ Template.home.events({
   },
   "submit form.log-in": function(event, template) {
     event.preventDefault();
-    var email = template.$('[name=field-email]').val();
-    var password = template.$('[name=field-password]').val();
+    var email = template.$('form.log-in [name=field-email]').val();
+    var password = template.$('form.log-in [name=field-password]').val();
     Meteor.loginWithPassword(email, password, function(error) {
       if (error) {
-        return console.log(error);
+        return Session.set(ERRORS_KEY, {'none': error.reason});
       }
       Router.go("room");
     });

@@ -2,23 +2,20 @@
   {{> sidebar}}
   <div id="messages" class="main container">
     <h2 class="ui header">
-      <i class="apple icon"></i>
+      <i class="{{icon}} icon"></i>
       <div class="content">
-        Room name
-        <div class="sub header">This room is about cats.</div>
+        {{name}}
+        <div class="sub header">{{description}}</div>
       </div>
     </h2>
     <div class="ui segment">
-      asdasd<br>
-      asdasf<br>
-      cvxcv<br>
-      xcv<br>
-      sdfsdfsf<br>
-      sdsdf<br>
+      {{#each messages}}
+        {{name}}: {{text}}<br>
+      {{/each}}
     </div>
     <div class="ui fluid action input">
-      <input type="text" placeholder="Message...">
-      <div class="ui button">Send</div>
+      <input type="text" class="message-text" placeholder="Message...">
+      <div class="ui button send-message">Send</div>
     </div>
   </div>
 </template>

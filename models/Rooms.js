@@ -6,6 +6,10 @@ Rooms.attachSchema(
       type: String
     },
     description: {
+      type: String,
+      optional: true
+    },
+    icon: {
       type: String
     },
     createdAt: {

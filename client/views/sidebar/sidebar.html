@@ -13,11 +13,14 @@
       </div>
       <div class="menu">
         {{#each rooms}}
-          <a class="item" href="#">{{name}}</a>
+          <a class="item {{acive}}" href="{{pathFor 'room' _id=this._id}}">
+            {{name}}
+            <i class="delete icon"></i>
+          </a>
         {{/each}}
 
         <div class="ui fluid action input">
-          <input type="text" placeholder="Room">
+          <input type="text" class="new-room-name" placeholder="Room">
           <div class="ui fluid button new-room">Create</div>
         </div>
       </div>

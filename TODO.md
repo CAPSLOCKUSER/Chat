@@ -2,8 +2,7 @@
 
 HIGH
 - login error display
-- room pagination
-- room pin / star
+- max room number
 - description change
 - icon change
 
@@ -12,8 +11,9 @@ NORMAL
 - error input: nem elég feltűnő
 - login/register elválasztsa nem elég széles
 - login vertical align
-
+- private rooms
 
 LOW
--
+- room pagination
+- room pin / star
 -

@@ -12,7 +12,12 @@ Router.route('/room/:_id?', {
   subscriptions: function() {
     return Meteor.subscribe('Rooms');
   },
+  data: function() {
+    return Rooms.findOne(this.params._id);
+  },
   action: function () {
+
+    //this.wait(Meteor.subscribe('Rooms', this.params._id));
     this.render('room');
     SEO.set({ title: 'Room - ' + Meteor.App.NAME });
   }
