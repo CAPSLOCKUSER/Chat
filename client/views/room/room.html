@@ -1,13 +1,7 @@
 <template name="room">
   {{> sidebar}}
   <div id="messages" class="main container">
-    <h2 class="ui header">
-      <i class="{{icon}} icon"></i>
-      <div class="content">
-        {{name}}
-        <div class="sub header">{{description}}</div>
-      </div>
-    </h2>
+    {{> room_header}}
     <div class="ui segment">
       {{#each messages}}
         {{name}}: {{text}}<br>

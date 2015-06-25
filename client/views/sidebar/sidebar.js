@@ -5,8 +5,11 @@ Template['sidebar'].helpers({
   "rooms": function() {
     return Rooms.find();
   },
-  "active": function(event, template) {
+  "active": function() {
     return "active";
+  },
+  "messages": function() {
+    return Messages.find();
   }
 });
 

@@ -1,4 +1,3 @@
-// Home Route
 Router.route('/', {
   name: 'home',
   action: function () {
@@ -10,15 +9,22 @@ Router.route('/', {
 Router.route('/room/:_id?', {
   name: 'room',
   subscriptions: function() {
-    return Meteor.subscribe('Rooms');
+    return Meteor.subscribe('Messages', this.params._id);
   },
   data: function() {
-    return Rooms.findOne(this.params._id);
+    return Messages.find();
   },
   action: function () {
 
-    //this.wait(Meteor.subscribe('Rooms', this.params._id));
+    this.render('roomHeader', {
+      data: function() {
+        console.log(Rooms.findOne(this.params._id));
+        return Rooms.findOne(this.params._id);
+      }
+    });
+
     this.render('room');
+
     SEO.set({ title: 'Room - ' + Meteor.App.NAME });
   }
 });

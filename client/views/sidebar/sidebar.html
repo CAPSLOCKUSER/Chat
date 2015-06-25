@@ -13,10 +13,10 @@
       </div>
       <div class="menu">
         {{#each rooms}}
-          <a class="item {{acive}}" href="{{pathFor 'room' _id=this._id}}">
-            {{name}}
-            <i class="delete icon"></i>
-          </a>
+          <div class="item">
+            <a class="{{acive}}" href="{{pathFor 'room' _id=this._id}}">{{name}}</a>
+            <a href="#"><i class="delete icon"></i></a>
+          </div>
         {{/each}}
 
         <div class="ui fluid action input">

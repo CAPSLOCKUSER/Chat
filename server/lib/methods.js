@@ -11,5 +11,8 @@ Meteor.methods({
         name: name
       }
     });
+  },
+  "GetMainRoom": function() {
+    return Rooms.findOne()._id;
   }
 })

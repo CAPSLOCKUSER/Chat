@@ -63,7 +63,12 @@ Template.home.events({
       if (error) {
         return Session.set(ERRORS_KEY, {'none': error.reason});
       }
-      Router.go("room");
+      Meteor.call("GetMainRoom", function(error, _id) {
+        if (error) {
+          return Session.set(ERRORS_KEY, {'none': error.reason});
+        }
+        Router.go("room", {_id: _id});
+      });
     });
   }
 });
