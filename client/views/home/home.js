@@ -52,26 +52,30 @@ Template.home.events({
       if (error) {
         return Session.set(ERRORS_KEY, {'none': error.reason});
       }
-      Router.go("room");
+      loginUser(email, password);
     });
   },
   "submit form.log-in": function(event, template) {
     event.preventDefault();
     var email = template.$('form.log-in [name=field-email]').val();
     var password = template.$('form.log-in [name=field-password]').val();
-    Meteor.loginWithPassword(email, password, function(error) {
+    loginUser(email, password);
+  }
+});
+
+function loginUser(email, password) {
+  Meteor.loginWithPassword(email, password, function(error) {
+    if (error) {
+      return Session.set(ERRORS_KEY, {'none': error.reason});
+    }
+    Meteor.call("GetMainRoom", function(error, _id) {
       if (error) {
         return Session.set(ERRORS_KEY, {'none': error.reason});
       }
-      Meteor.call("GetMainRoom", function(error, _id) {
-        if (error) {
-          return Session.set(ERRORS_KEY, {'none': error.reason});
-        }
-        Router.go("room", {_id: _id});
-      });
+      Router.go("room", {_id: _id});
     });
-  }
-});
+  });
+}
 
 function validateEmail(email) {
   var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;

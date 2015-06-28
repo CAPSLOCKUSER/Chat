@@ -1,18 +1,23 @@
 Template['room'].helpers({
   "messages": function() {
-    return Messages.find({roomId: this._id});
+    return Messages.find({roomId: this._id}, {sort: {createdAt: 1}});
   }
 });
 
 Template['room'].events({
-  "click .send-message": function(event, tempalte) {
+  "submit .send-message": function(event, template) {
     event.preventDefault();
-    var msg = tempalte.$(".message-text").val();
-    Messages.insert({
+    var text = template.$(".message-text").val();
+    if (!text.length) {
+      return;
+    }
+    var msg = {
       name: Meteor.user().profile.name,
-      text: msg,
+      text: text,
       roomId: this._id,
       createdAt: new Date()
-    })
+    };
+    Messages.insert(msg);
+    template.$(".message-text").val("")
   }
 });

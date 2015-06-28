@@ -3,7 +3,7 @@ Template['sidebar'].helpers({
     return Meteor.App.NAME;
   },
   "rooms": function() {
-    return Rooms.find();
+    return Rooms.find({}, {sort: {createdAt: 1}});
   },
   "active": function() {
     return "active";
@@ -37,5 +37,12 @@ Template['sidebar'].events({
       template.$(".new-room-name").val("");
       Router.go("room", {_id: _id});
     });
+  },
+  "click .delete-room": function(event, template) {
+    event.preventDefault();
+    var confirmed = window.confirm('Do you really want to delete this room?');
+    if (confirmed) {
+      Rooms.remove(this._id);
+    }
   }
 });

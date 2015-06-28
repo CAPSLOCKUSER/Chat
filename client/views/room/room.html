@@ -1,15 +1,15 @@
 <template name="room">
   {{> sidebar}}
   <div id="messages" class="main container">
-    {{> room_header}}
-    <div class="ui segment">
+    {{> yield "room_header"}}
+    <ul class="ui segment">
       {{#each messages}}
-        {{name}}: {{text}}<br>
+        <li><b>{{name}}:</b> {{text}}</li>
       {{/each}}
-    </div>
-    <div class="ui fluid action input">
+    </ul>
+    <form class="ui fluid action input send-message" action="#" method="POST" novalidate="">
       <input type="text" class="message-text" placeholder="Message...">
-      <div class="ui button send-message">Send</div>
-    </div>
+      <button type="submit" class="ui button">Send</button>
+    </form>
   </div>
 </template>

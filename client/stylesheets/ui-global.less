@@ -1,3 +1,5 @@
+@import 'lib/elements';
+
 .main.container {
   padding: 3em 2em;
 }
@@ -12,4 +14,41 @@
 
 header {
   padding: 2em 2em 3em;
+}
+
+.room-header {
+
+  .content {
+    width: 100%;
+
+    .sub.header {
+      width: 100%;
+      background: none;
+      border: 1px solid rgba(0, 0, 0, 0);
+      display: block;
+      padding-left: 5px;
+      //.transition(2s);
+
+      &:focus {
+        background: white;
+        border: 1px solid black;
+        outline: 0;
+      }
+    }
+  }
+}
+
+.sidebar.menu {
+
+  a.delete-room .delete.icon {
+    float: right;
+    display: none;
+  }
+  .room-list .item:hover .delete.icon {
+    display: block;
+  }
+
+  a.sign-out:hover {
+    color: white;
+  }
 }

@@ -6,24 +6,27 @@ Router.route('/', {
   }
 });
 
-Router.route('/room/:_id?', {
+Router.route('/room/:_id', {
   name: 'room',
   subscriptions: function() {
     return Meteor.subscribe('Messages', this.params._id);
   },
-  data: function() {
-    return Messages.find();
-  },
-  action: function () {
+  action: function() {
 
-    this.render('roomHeader', {
+    this.render('room_header', {
       data: function() {
-        console.log(Rooms.findOne(this.params._id));
         return Rooms.findOne(this.params._id);
-      }
+      },
+      to: 'room_header'
     });
 
-    this.render('room');
+    this.render('room', {
+      data: function() {
+        return {
+          _id: this.params._id
+        };
+      }
+    });
 
     SEO.set({ title: 'Room - ' + Meteor.App.NAME });
   }
